@@ -1,5 +1,4 @@
 import Image from "next/image";
-import css from "styled-jsx/css";
 
 interface KakaoLoginButtonProps {
   onClick: any;
@@ -10,8 +9,8 @@ export default function KakaoLoginButton({ onClick }: KakaoLoginButtonProps) {
       <Image
         src="/kakao_login_large_narrow.png"
         alt="kakao"
-        width="180"
-        height="40"
+        width="200"
+        height="50"
       ></Image>
     </div>
   );

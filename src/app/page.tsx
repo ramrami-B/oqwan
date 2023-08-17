@@ -1,11 +1,15 @@
-import styles from './page.module.css'
+"use client";
+import { useState } from "react";
 
 export default function Home() {
+  const [isLanding, setIsLanding] = useState(true);
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <h1>오큐완</h1>
+    <main>
+      <div>
+        {isLanding
+          ? (window.location.href = "/landing")
+          : (window.location.href = "/myqt")}
       </div>
     </main>
-  )
+  );
 }

@@ -1,34 +1,10 @@
 "use client";
-import css from "styled-jsx/css";
 import KakaoLoginButton from "../components/kakaoLoginButton";
 import Script from "next/script";
-import axios from "axios";
-import { NextApiRequest, NextApiResponse } from "next";
 import { REDIRECT_URL } from "../service/constants";
 import { useEffect } from "react";
 import { getCookie } from "../service/cookie";
-
-const style = css`
-  .layout {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1em;
-  }
-  p {
-    font-size: 20px;
-    margin: 0;
-  }
-  h1 {
-    font-size: 24px;
-  }
-  .title {
-    text-align: center;
-  }
-`;
+import { landingStyle } from "@/style/landingStyle";
 
 export default function Landing() {
   useEffect(() => {
@@ -73,7 +49,7 @@ export default function Landing() {
         onLoad={kakaoInit}
       ></Script>
 
-      <style jsx>{style}</style>
+      <style jsx>{landingStyle}</style>
     </div>
   );
 }

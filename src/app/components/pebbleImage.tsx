@@ -1,14 +1,5 @@
+import { PebbleImageStyle } from "@/style/componentsStyle";
 import Image from "next/image";
-import css from "styled-jsx/css";
-
-const style = css`
-  div {
-    height: 70%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-`;
 
 export default function PebbleImage({ pebbleStatus }: any) {
   return (
@@ -37,7 +28,7 @@ export default function PebbleImage({ pebbleStatus }: any) {
       ) : pebbleStatus === "sad" ? (
         <Image src="/sad_pebble.svg" alt="sad-pebble" width="65" height="65" />
       ) : null}
-      <style jsx>{style}</style>
+      <style jsx>{PebbleImageStyle}</style>
     </div>
   );
 }

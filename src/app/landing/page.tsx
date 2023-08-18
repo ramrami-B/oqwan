@@ -5,6 +5,8 @@ import Script from "next/script";
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 import { REDIRECT_URL } from "../service/constants";
+import { useEffect } from "react";
+import { getCookie } from "../service/cookie";
 
 const style = css`
   .layout {
@@ -29,6 +31,12 @@ const style = css`
 `;
 
 export default function Landing() {
+  useEffect(() => {
+    if (getCookie("access_token")) {
+      window.location.href = "/myqt";
+    }
+  }, []);
+
   async function kakaoInit() {
     await window.Kakao;
     try {

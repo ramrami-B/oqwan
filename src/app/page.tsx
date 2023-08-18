@@ -1,3 +1,4 @@
+"use client";
 import { getCookie } from "./service/cookie";
 
 export default function Home() {

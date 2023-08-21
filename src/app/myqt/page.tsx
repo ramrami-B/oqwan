@@ -1,20 +1,22 @@
 "use client";
 import { useEffect, useState } from "react";
-import { getCookie } from "../service/cookie";
-import AddQtButton from "../components/addQtButton";
 import { qtData } from "../service/data";
 import PebbleImage from "../components/pebbleImage";
 import { getTodayDate } from "../service/date";
 import BottomNavigationBar from "../components/bottomNavigationBar";
+import Modal from "../components/modal";
 import { myqtStyle } from "@/style/myqtStyle";
+import Button from "../components/button";
 
 export default function Myqt() {
   const [tabIndex, setTabIndex] = useState(0);
+  const [showModal, setShowModal] = useState(false);
+  const [modalStatus, setModalStatus] = useState("add");
 
   useEffect(() => {
-    if (!getCookie("access_token")) {
-      window.location.href = "/landing";
-    }
+    // if (!getCookie("access_token")) {
+    //   window.location.href = "/landing";
+    // }
   }, []);
 
   useEffect(() => {
@@ -29,16 +31,28 @@ export default function Myqt() {
     setTabIndex(idx);
   }
 
-  function onClickAddQtButton() {
-    console.log("add qt!");
+  function onClickShowModal() {
+    setShowModal(!showModal);
   }
 
   return (
     <div className="layout">
+      {showModal && (
+        <Modal
+          modalStatus={modalStatus}
+          onClickShowModal={onClickShowModal}
+          showModal={showModal}
+        ></Modal>
+      )}
       <h1 className="title">오큐완</h1>
       <div className="top">
         <p className="today">Today: {getTodayDate()}</p>
-        <AddQtButton onClickAddQtButton={onClickAddQtButton} />
+        <Button
+          onClickButton={onClickShowModal}
+          text="큐티 기록 하기"
+          buttonId="openModalButton"
+          size="small"
+        />
       </div>
       <div className="wrap-scroll">
         <div className="qt-box">

@@ -7,7 +7,7 @@ import {
 import { useState } from "react";
 import PebbleImage from "./pebbleImage";
 import { PEBBLE_STATUS, QT_CONTENT } from "../service/constants";
-import Button from "./button";
+import Button from "./greenButton";
 import { modalStyle } from "@/style/modalStyle";
 
 interface ModalProps {

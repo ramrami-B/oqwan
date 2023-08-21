@@ -3,10 +3,11 @@ import { useEffect, useState } from "react";
 import { qtData } from "../service/data";
 import PebbleImage from "../components/pebbleImage";
 import { getTodayDate } from "../service/date";
-import BottomNavigationBar from "../components/bottomNavigationBar";
-import Modal from "../components/modal";
+import Modal from "../components/Modal";
 import { myqtStyle } from "@/style/myqtStyle";
-import Button from "../components/button";
+import GreenButton from "../components/greenButton";
+import { getCookie } from "../service/cookie";
+import BottomNavigationBar from "../components/bottomNavigationBar";
 
 export default function Myqt() {
   const [tabIndex, setTabIndex] = useState(0);
@@ -14,9 +15,9 @@ export default function Myqt() {
   const [modalStatus, setModalStatus] = useState("add");
 
   useEffect(() => {
-    // if (!getCookie("access_token")) {
-    //   window.location.href = "/landing";
-    // }
+    if (!getCookie("access_token")) {
+      window.location.href = "/landing";
+    }
   }, []);
 
   useEffect(() => {
@@ -47,7 +48,7 @@ export default function Myqt() {
       <h1 className="title">오큐완</h1>
       <div className="top">
         <p className="today">Today: {getTodayDate()}</p>
-        <Button
+        <GreenButton
           onClickButton={onClickShowModal}
           text="큐티 기록 하기"
           buttonId="openModalButton"

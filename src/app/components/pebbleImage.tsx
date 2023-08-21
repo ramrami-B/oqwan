@@ -1,4 +1,3 @@
-import { PebbleImageStyle } from "@/style/componentsStyle";
 import Image from "next/image";
 
 export default function PebbleImage({ pebbleStatus }: any) {
@@ -37,7 +36,14 @@ export default function PebbleImage({ pebbleStatus }: any) {
           priority
         />
       ) : null}
-      <style jsx>{PebbleImageStyle}</style>
+      <style jsx>{`
+        div {
+          height: 70%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      `}</style>
     </div>
   );
 }

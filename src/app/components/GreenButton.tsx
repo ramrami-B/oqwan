@@ -1,16 +1,16 @@
-interface buttonProps {
+interface GreenButtonProps {
   onClickButton: any;
   text: string;
   buttonId: string;
   size: string;
 }
 
-export default function Button({
+export default function GreenButton({
   onClickButton,
   text,
   buttonId,
   size,
-}: buttonProps) {
+}: GreenButtonProps) {
   return (
     <label
       htmlFor={buttonId}

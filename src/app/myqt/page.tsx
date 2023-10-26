@@ -1,23 +1,32 @@
 "use client";
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { qtData } from "../service/data";
-import PebbleImage from "../components/pebbleImage";
+import PebbleImage from "../components/PebbleImage";
 import { getTodayDate } from "../service/date";
-import Modal from "../components/Modal";
+import Modal from "../components/modal/Modal";
 import { myqtStyle } from "@/style/myqtStyle";
-import GreenButton from "../components/greenButton";
+import GreenButton from "../components/GreenButton";
 import { getCookie } from "../service/cookie";
-import BottomNavigationBar from "../components/bottomNavigationBar";
+import BottomNavigationBar from "../components/BottomNavigationBar";
 
 export default function Myqt() {
+  // const ModalContext = createContext({});
+  const value = {
+    isShow: false,
+    status: "add",
+    data: Object(),
+  };
   const [tabIndex, setTabIndex] = useState(0);
   const [showModal, setShowModal] = useState(false);
-  const [modalStatus, setModalStatus] = useState("add");
+  const [modalInfo, setModalInfo] = useState({
+    status: "add",
+    data: Object(),
+  });
 
   useEffect(() => {
-    if (!getCookie("access_token")) {
-      window.location.href = "/landing";
-    }
+    // if (!getCookie("access_token")) {
+    //   window.location.href = "/landing";
+    // }
   }, []);
 
   useEffect(() => {
@@ -36,45 +45,56 @@ export default function Myqt() {
     setShowModal(!showModal);
   }
 
+  function viewDailyQT(qtData: object) {
+    setShowModal(!showModal);
+    setModalInfo({ status: "view", data: qtData });
+  }
+
   return (
-    <div className="layout">
-      {showModal && (
-        <Modal
-          modalStatus={modalStatus}
-          onClickShowModal={onClickShowModal}
-          showModal={showModal}
-        ></Modal>
-      )}
-      <h1 className="title">오큐완</h1>
-      <div className="top">
-        <p className="today">Today: {getTodayDate()}</p>
-        <GreenButton
-          onClickButton={onClickShowModal}
-          text="큐티 기록 하기"
-          buttonId="openModalButton"
-          size="small"
+    <>
+      <div className="layout">
+        {showModal && (
+          <Modal
+            onClickShowModal={onClickShowModal}
+            showModal={showModal}
+            modalInfo={modalInfo}
+          ></Modal>
+        )}
+        <h1 className="title">오큐완</h1>
+        <div className="top">
+          <p className="today">Today: {getTodayDate()}</p>
+          <GreenButton
+            onClickButton={onClickShowModal}
+            text="큐티 기록 하기"
+            buttonId="openModalButton"
+            size="small"
+          />
+        </div>
+        <div className="wrap-scroll">
+          <div className="qt-box">
+            {qtData.map((qt, idx) => {
+              return (
+                <div
+                  key={idx}
+                  className="container"
+                  onClick={() => viewDailyQT(qt)}
+                >
+                  <div className="qt-text-div">
+                    <p className="qt-date">{qt.date}</p>
+                    <p className="qt-bible-verse">{qt.bibleVerse}</p>
+                  </div>
+                  <PebbleImage pebbleStatus={qt.pebbleStatus} />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <BottomNavigationBar
+          tabIndex={tabIndex}
+          onClickBottomTab={onClickBottomTab}
         />
       </div>
-      <div className="wrap-scroll">
-        <div className="qt-box">
-          {qtData.map((qt, idx) => {
-            return (
-              <div key={idx} className="container">
-                <div className="qt-text-div">
-                  <p className="qt-date">{qt.date}</p>
-                  <p className="qt-bible-verse">{qt.bibleVerse}</p>
-                </div>
-                <PebbleImage pebbleStatus={qt.pebbleStatus} />
-              </div>
-            );
-          })}
-        </div>
-      </div>
-      <BottomNavigationBar
-        tabIndex={tabIndex}
-        onClickBottomTab={onClickBottomTab}
-      />
       <style jsx>{myqtStyle}</style>
-    </div>
+    </>
   );
 }

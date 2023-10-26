@@ -4,7 +4,7 @@ import { REDIRECT_URL } from "../service/constants";
 import { useEffect } from "react";
 import { getCookie } from "../service/cookie";
 import { landingStyle } from "@/style/landingStyle";
-import KakaoLoginButton from "../components/kakaoLoginButton";
+import KakaoLoginButton from "../components/KakaoLoginButton";
 
 export default function Landing() {
   useEffect(() => {

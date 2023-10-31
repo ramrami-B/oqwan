@@ -5,6 +5,7 @@ import { REDIRECT_URL } from "../service/constants";
 import { useEffect } from "react";
 import { getCookie } from "../service/cookie";
 import { landingStyle } from "@/style/landingStyle";
+import KakaoLoginButton from "../components/KakaoLoginButton";
 
 export default function Landing() {
   useEffect(() => {
@@ -40,7 +41,7 @@ export default function Landing() {
           오큐완 ✍🏻
         </h1>
       </div>
-      <KakaoLoginButton onClick={kakaoLogin}></KakaoLoginButton>
+      <KakaoLoginButton onClick={kakaoLogin} />
 
       <Script
         src="https://t1.kakaocdn.net/kakao_js_sdk/2.3.0/kakao.min.js"

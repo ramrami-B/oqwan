@@ -1,4 +1,3 @@
-import { PebbleImageStyle } from "@/style/componentsStyle";
 import Image from "next/image";
 
 export default function PebbleImage({ pebbleStatus }: any) {
@@ -10,6 +9,7 @@ export default function PebbleImage({ pebbleStatus }: any) {
           alt="good-pebble"
           width="65"
           height="65"
+          priority
         />
       ) : pebbleStatus === "upset" ? (
         <Image
@@ -17,6 +17,7 @@ export default function PebbleImage({ pebbleStatus }: any) {
           alt="upset-pebble"
           width="65"
           height="65"
+          priority
         />
       ) : pebbleStatus === "excited" ? (
         <Image
@@ -24,11 +25,25 @@ export default function PebbleImage({ pebbleStatus }: any) {
           alt="excited-pebble"
           width="65"
           height="65"
+          priority
         />
       ) : pebbleStatus === "sad" ? (
-        <Image src="/sad_pebble.svg" alt="sad-pebble" width="65" height="65" />
+        <Image
+          src="/sad_pebble.svg"
+          alt="sad-pebble"
+          width="65"
+          height="65"
+          priority
+        />
       ) : null}
-      <style jsx>{PebbleImageStyle}</style>
+      <style jsx>{`
+        div {
+          height: 70%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      `}</style>
     </div>
   );
 }

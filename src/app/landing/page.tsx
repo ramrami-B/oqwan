@@ -1,5 +1,5 @@
 "use client";
-import KakaoLoginButton from "../components/kakaoLoginButton";
+import KakaoLoginButton from "../components/KakaoLoginButton";
 import Script from "next/script";
 import { REDIRECT_URL } from "../service/constants";
 import { useEffect } from "react";

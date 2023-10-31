@@ -1,11 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
 import { getCookie } from "../service/cookie";
-import AddQtButton from "../components/addQtButton";
+import AddQtButton from "../components/AddQtButton";
 import { qtData } from "../service/data";
-import PebbleImage from "../components/pebbleImage";
+import PebbleImage from "../components/PebbleImage";
 import { getTodayDate } from "../service/date";
-import BottomNavigationBar from "../components/bottomNavigationBar";
+import BottomNavigationBar from "../components/BottomNavigationBar";
 import { myqtStyle } from "@/style/myqtStyle";
 
 export default function Myqt() {

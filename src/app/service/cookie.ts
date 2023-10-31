@@ -6,6 +6,6 @@ export function setCookie(name: string, value: string, exp: any) {
 }
 
 export function getCookie(name:string) {
-  let value = document.cookie.match("(^|;) ?" + name + "=([^;]*)(;|$)");
+  let value = document?.cookie.match("(^|;) ?" + name + "=([^;]*)(;|$)");
   return value ? value[2] : null;
 }

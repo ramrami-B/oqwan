@@ -26,7 +26,7 @@ export default function Loading() {
         })
         .then((res) => {
           setCookie("access_token", res.data.access_token, 1);
-          window.location.href = "/myqt";
+          if (typeof window !== "undefined") window.location.href = "/myqt";
         });
     } catch (e) {
       console.log(e);

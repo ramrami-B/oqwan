@@ -1,5 +1,6 @@
-import { BOTTOM_TAPS } from "../service/constants";
+
 import { BottomNavigationBarStyle } from "@/style/componentsStyle";
+import { BOTTOM_TAPS } from "../constants/ui";
 
 interface BottomNavigationBarProps {
   tabIndex: number;

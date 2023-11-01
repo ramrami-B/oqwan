@@ -1,10 +1,10 @@
 "use client";
 import KakaoLoginButton from "../components/KakaoLoginButton";
 import Script from "next/script";
-import { REDIRECT_URL } from "../service/constants";
 import { useEffect } from "react";
 import { getCookie } from "../service/cookie";
 import { landingStyle } from "@/style/landingStyle";
+import { REDIRECT_URL } from "../constants/kakao";
 
 export default function Landing() {
   useEffect(() => {

@@ -1,5 +1,6 @@
 "use client";
-import { GET_TOKEN_URL, REDIRECT_URL } from "@/app/service/constants";
+
+import { GET_TOKEN_URL, REDIRECT_URL } from "@/app/constants/kakao";
 import { setCookie } from "@/app/service/cookie";
 import axios from "axios";
 import { useEffect } from "react";
